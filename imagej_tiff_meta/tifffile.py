@@ -3410,6 +3410,12 @@ class Record(dict):
 
     def __setattr__(self, name, value):
         self.__setitem__(name, value)
+        
+    def __getstate__(self):
+      return self
+    
+    def __setstate__(self, dict_ct):
+      self.update(dict_ct)
 
     def __str__(self):
         """Pretty print Record."""
